@@ -10,7 +10,7 @@ let palette = [
 
 function preload() {
   // 🎵 新增：載入音效（確保 MP3 檔放在與此程式同層資料夾中）
-  popSound = loadSound('libraries/bubble-pop-06-351337.mp3');
+  popSound = loadSound('bubble-pop-06-351337.mp3');
 
 }
 
