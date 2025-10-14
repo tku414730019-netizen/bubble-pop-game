@@ -12,9 +12,11 @@ let timer = 60; // 倒數計時
 let gameStarted = false; // 遊戲是否開始
 let gameOver = false; // 遊戲是否結束
 let restartButton;
+let restartImage;
 
 function preload() {
   popSound = loadSound('bubble-pop-06-351337.mp3');
+  restartImage = loadImage('tryagain.png'); // 載入重新開始圖片
 }
 
 function setup() {
@@ -64,11 +66,8 @@ function displayEndScreen() {
   text("你的分數是：" + score, width / 2, height / 2 + 50);
 
   // 重新開始按鈕
-  fill(255);
-  textSize(32);
-  textAlign(CENTER, CENTER);
-  text("重新開始", width / 2, height / 2 + 150);
-  ellipse(width / 2, height / 2 + 200, 50, 50); // 畫一個圓圈作為按鈕的視覺效果
+  imageMode(CENTER);
+  image(restartImage, width / 2, height / 2 + 175, 50, 50); // 顯示重新開始圖片
 }
 
 function displayGame() {
