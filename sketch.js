@@ -66,8 +66,11 @@ function displayEndScreen() {
   text("你的分數是：" + score, width / 2, height / 2 + 50);
 
   // 重新開始按鈕
+  textAlign(CENTER);
+  textSize(24);
+  text("重新開始", width / 2, height / 2 + 150);
   imageMode(CENTER);
-  image(restartImage, width / 2, height / 2 + 175, 50, 50); // 顯示重新開始圖片
+  image(restartImage, width / 2, height / 2 + 200, 100, 100); // 顯示重新開始圖片
 }
 
 function displayGame() {
@@ -173,7 +176,12 @@ function mousePressed() {
           popSound.play();
         }
 
-        score++;
+        // 分數判斷
+        if (isGoodColor(c.color)) {
+          score++;
+        } else {
+          score--;
+        }
 
         c.r = random(50, 140);
         c.speed = map(c.r, 120, 260, 2, 6);
@@ -206,4 +214,17 @@ function startGame() {
       speed: speed
     });
   }
+}
+
+function keyPressed() {
+  if (keyCode === ESCAPE) {
+    gameOver = true;
+  }
+}
+
+function isGoodColor(color) {
+  // 檢查是否為指定的顏色
+  let color1 = color[0] === 176 && color[1] === 66 && color[2] === 66 && color[3] === 204;
+  let color2 = color[0] === 224 && color[1] === 207 && color[2] === 186 && color[3] === 204;
+  return color1 || color2;
 }
